@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine's Invitaion 💖</title>
+  <title>Valentine's Invitation 💖</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
+  <!-- Open Graph for link previews -->
+  <meta property="og:title" content="Sacred Ground Invitation 💖">
+  <meta property="og:description" content="Feb 14, Sat 6:30pm at CCF Field. Join us for praise and worship! 🙌">
+  <meta property="og:image" content="blank.png"> <!-- tiny neutral image -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://warrenpagsuyuin.github.io/valentines-invite/">
 
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -27,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* Main Card */
     .container {
       background: rgba(255,255,255,0.15);
       backdrop-filter: blur(10px);
@@ -51,7 +56,6 @@
       line-height: 1.6;
     }
 
-    /* Buttons */
     .buttons {
       display: flex;
       justify-content: center;
@@ -85,7 +89,6 @@
       position: relative;
     }
 
-    /* Invitation Image */
     #inviteImg {
       display: none;
       margin-top: 20px;
@@ -94,7 +97,6 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    /* Floating Hearts */
     .heart {
       position: absolute;
       color: #ff4d6d;
@@ -104,53 +106,22 @@
       pointer-events: none;
     }
 
-    /* Animations */
-
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes float {
-      from {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(-10vh) scale(1.3);
-        opacity: 1;
-      }
+      from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      to { transform: translateY(-10vh) scale(1.3); opacity: 1; }
     }
-
-    /* Mobile Optimization */
 
     @media (max-width: 500px) {
-
-      .container {
-        padding: 25px 20px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
-
-      button {
-        font-size: 0.9rem;
-        padding: 8px 20px;
-      }
-
+      .container { padding: 25px 20px; }
+      h1 { font-size: 1.6rem; }
+      p { font-size: 0.9rem; }
+      button { font-size: 0.9rem; padding: 8px 20px; }
     }
-
   </style>
 </head>
 <body>
@@ -161,16 +132,13 @@
   </audio>
 
   <div class="container">
-
     <h1>✨ Are You Available This Saturday? ✨</h1>
 
     <p>
       Love is in the air… 💗<br><br>
       And the greatest love we’ll ever know comes from Jesus Christ. ✝️<br><br>
-
       Come and experience His unconditional love and overflowing grace at this month’s
       <b>Sacred Ground</b> as we lift our voices in praise and worship together. 🙌<br><br>
-
       🗓️ <b>February 14, 2026 (Saturday)</b><br>
       📍 <b>CCF Field</b>
     </p>
@@ -182,81 +150,45 @@
 
     <!-- Invitation Image -->
     <img id="inviteImg" src="sacredground.jpg" alt="Sacred Ground Invitation">
-
   </div>
 
   <script>
-
     function yesClicked() {
-
-      // Change title
-      document.querySelector('.container h1').innerHTML =
-        '🎉 See You There! 🙌';
-
-      // Change message
+      document.querySelector('.container h1').innerHTML = '🎉 See You There! 🙌';
       document.querySelector('.container p').innerHTML = `
         We are excited to worship with you! 💗<br><br>
-
         Here are the details again:<br><br>
-
         🗓️ <b>February 14, 2026 (Saturday)</b><br>
         📍 <b>CCF Field</b><br><br>
-
         God bless you! 🙏
       `;
+      document.getElementById('inviteImg').style.display = 'block';
 
-      // Show image
-      const img = document.getElementById('inviteImg');
-      if (img) img.style.display = 'block';
-
-      // Play music safely
       const music = document.getElementById('bgMusic');
-      if (music) {
-        music.play().catch(() => {
-          console.log("Autoplay blocked");
-        });
-      }
+      if (music) music.play().catch(() => console.log("Autoplay blocked"));
 
-      // Hearts animation
       createHearts();
     }
 
-    // Move "No" button
     function moveButton() {
-
       const button = document.querySelector('.no');
-
       const x = Math.random() * 200 - 100;
       const y = Math.random() * 200 - 100;
-
       button.style.transform = `translate(${x}px, ${y}px)`;
     }
 
-    // Floating hearts
     function createHearts() {
-
       for (let i = 0; i < 35; i++) {
-
         const heart = document.createElement('div');
-
         heart.className = 'heart';
         heart.innerHTML = '❤️';
-
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration =
-          (Math.random() * 3 + 2) + 's';
-
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
         document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
-
+        setTimeout(() => heart.remove(), 5000);
       }
     }
-
   </script>
 
 </body>
 </html>
-
